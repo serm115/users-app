@@ -1,11 +1,22 @@
 import { createContext, useEffect, useReducer } from 'react'
-import {usersReducer} from '../Reducers/users'
+import { usersReducer } from '../Reducers/users'
 
-const UsersStateContext = createContext()
-const UsersDispatchContext = createContext()
+export const UsersStateContext = createContext()
+export const UsersDispatchContext = createContext()
 
 const initialState = {
-    users: []
+    users: [
+        {
+            id: 1,
+            firstName: '',
+            lastName: '',
+            isAdmin: false,
+            jobTitle: '',
+            email: '',
+            mobile: '',
+            joinDate: ''
+        }
+    ]
 }
 
 const localState = JSON.parse(localStorage.getItem('users'))

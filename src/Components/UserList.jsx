@@ -1,33 +1,43 @@
-import React from 'react'
+import UserItem from './UserItem'
+import { useUsersState } from '../Hooks/useUsersState'
 
 function UserList() {
+    const { users } = useUsersState()
     return (
         <table className="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Is Admin</th>
-                    <th scope="col">Job Title</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Mobile</th>
-                    <th scope="col">Join Date</th>
-                    <th scope="col"></th>
+                    <th className="text-center" scope="col">
+                        #
+                    </th>
+                    <th className="text-center" scope="col">
+                        First Name
+                    </th>
+                    <th className="text-center" scope="col">
+                        Last Name
+                    </th>
+                    <th className="text-center" scope="col">
+                        Is Admin
+                    </th>
+                    <th className="text-center" scope="col">
+                        Job Title
+                    </th>
+                    <th className="text-center" scope="col">
+                        Email
+                    </th>
+                    <th className="text-center" scope="col">
+                        Mobile
+                    </th>
+                    <th className="text-center" scope="col">
+                        Join Date
+                    </th>
+                    <th className="text-center" scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                {users.map((user, index) => (
+                    <UserItem key={user.id} num={index + 1} user={user} />
+                ))}
             </tbody>
         </table>
     )
