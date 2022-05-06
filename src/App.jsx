@@ -36,57 +36,68 @@ function App() {
                             <div className="modal-body">
                                 <form>
                                     <div className="row">
-                                        <div class="mb-3 col-12 col-md-6">
-                                            <label for="first-name" class="form-label">
+                                        <div className="mb-3 col-12 col-md-6">
+                                            <label htmlFor="first-name" className="form-label">
                                                 First name
                                             </label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 id="first-name"
                                             />
                                         </div>
-                                        <div class="mb-3 col-12 col-md-6">
-                                            <label for="last-name" class="form-label">
+                                        <div className="mb-3 col-12 col-md-6">
+                                            <label htmlFor="last-name" className="form-label">
                                                 Last name
                                             </label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 id="last-name"
                                             />
                                         </div>
 
-                                        <div class="mb-3 col-12 col-md-6">
-                                            <label for="job-title" class="form-label">
+                                        <div className="mb-3 col-12 col-md-6">
+                                            <label htmlFor="job-title" className="form-label">
                                                 Job title
                                             </label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 id="job-title"
                                             />
                                         </div>
-                                        <div class="mb-3 col-12 col-md-6">
-                                            <label for="email" class="form-label">
+                                        <div className="mb-3 col-12 col-md-6">
+                                            <label htmlFor="email" className="form-label">
                                                 Email
                                             </label>
-                                            <input type="email" class="form-control" id="email" />
+                                            <input
+                                                type="email"
+                                                className="form-control"
+                                                id="email"
+                                            />
                                         </div>
-                                        <div class="mb-3 col-12 col-md-6">
-                                            <label for="mobile" class="form-label">
+                                        <div className="mb-3 col-12 col-md-6">
+                                            <label htmlFor="mobile" className="form-label">
                                                 Mobile
                                             </label>
-                                            <input type="text" class="form-control" id="mobile" />
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="mobile"
+                                            />
                                         </div>
                                         <div className="mb-3 col-12 col-md-6 d-flex align-items-center">
-                                            <div class="form-check">
+                                            <div className="form-check">
                                                 <input
                                                     type="checkbox"
-                                                    class="form-check-input"
+                                                    className="form-check-input"
                                                     id="is-admin"
                                                 />
-                                                <label class="form-check-label" for="is-admin">
+                                                <label
+                                                    className="form-check-label"
+                                                    htmlFor="is-admin"
+                                                >
                                                     Is admin
                                                 </label>
                                             </div>
