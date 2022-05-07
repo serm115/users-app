@@ -7,7 +7,7 @@ function UserItem({ num, user }) {
     const { id, firstName, lastName, isAdmin, jobTitle, email, mobile, joinDate } = user
     const dispatch = useUsersDispatch()
 
-    const handleDelete = (id) => {
+    const handleDelete = () => {
         dispatch({
             type: 'delete_user',
             payload: {
@@ -50,7 +50,7 @@ function UserItem({ num, user }) {
                     <td className="text-center">{joinDate}</td>
                     <td className="text-center">
                         <div className="d-flex">
-                            <button className="btn btn-danger me-2" onClick={() => handleDelete(id)}>
+                            <button className="btn btn-danger me-2" onClick={handleDelete}>
                                 Delete
                             </button>
                             <button className="btn btn-info" onClick={() => setEdit(true)}>
