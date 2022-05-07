@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useUsersDispatch } from '../Hooks/useUsersDispatch'
 
 function AddUserFormModal() {
     const [user, setUser] = useState({ id: 0, firstName: '', lastName: '', isAdmin: false, jobTitle: '', email: '', mobile: '', joinDate: '' })
+    const dispatch = useUsersDispatch()
 
     const handleInputChange = (e) => {
         const target = e.target
@@ -10,8 +12,20 @@ function AddUserFormModal() {
 
         setUser((prevState) => ({ ...prevState, [name]: value }))
     }
+
+    const handleSaveButtonClick = () => {
+        user.id = Date.now()
+        user.joinDate = new Date().toLocaleString()
+        dispatch({
+            type: 'add_user',
+            payload: {
+                user,
+            },
+        })
+    }
+
     return (
-        <div className="modal" tabIndex="-1" id="add-user-modal">
+        <div className="modal fade" tabIndex="-1" id="add-user-modal">
             <div className="modal-dialog modal-lg">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -67,7 +81,7 @@ function AddUserFormModal() {
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
                             Close
                         </button>
-                        <button type="button" className="btn btn-primary">
+                        <button type="button" className="btn btn-primary" onClick={handleSaveButtonClick}>
                             Save
                         </button>
                     </div>
