@@ -22,6 +22,7 @@ function AddUserFormModal() {
                 user,
             },
         })
+        setUser({ id: 0, firstName: '', lastName: '', isAdmin: false, jobTitle: '', email: '', mobile: '', joinDate: '' })
     }
 
     return (
