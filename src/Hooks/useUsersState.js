@@ -8,5 +8,5 @@ export function useUsersState() {
         throw Error('useUserState must be used with UsersProvider')
     }
 
-    return context
+    return context.users
 }

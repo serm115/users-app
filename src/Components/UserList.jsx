@@ -2,7 +2,7 @@ import UserItem from './UserItem'
 import { useUsersState } from '../Hooks/useUsersState'
 
 function UserList() {
-    const { users } = useUsersState()
+    const users = useUsersState()
     return (
         <table className="table table-striped">
             <thead>

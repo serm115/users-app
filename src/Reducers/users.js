@@ -14,18 +14,15 @@ const addUser = (state, action) => {
     let { user } = action.payload
     return {
         ...state,
-        users: [
-            ...state.users,
-            user
-        ]
+        users: [...state.users, user],
     }
 }
 
-const deleteUser = (state , action ) => {
-    let { id } = action.payload;
+const deleteUser = (state, action) => {
+    let { id } = action.payload
 
     return {
         ...state,
-        users : state.users.filter(item => item.id !== id)
+        users: state.users.filter((item) => item.id !== id),
     }
 }
