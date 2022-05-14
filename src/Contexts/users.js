@@ -1,5 +1,5 @@
 import { createContext, useEffect, useReducer } from 'react'
-import { usersReducer } from '../Reducers/users'
+import { usersReducer } from '../reducers/users'
 
 export const UsersStateContext = createContext()
 export const UsersDispatchContext = createContext()

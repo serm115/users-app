@@ -1,5 +1,5 @@
-import UserItem from './UserItem'
-import { useUsersState } from '../Hooks/useUsersState'
+import UserItem from './userItem'
+import { useUsersState } from '../hooks/useUsersState'
 
 function UserList() {
     const users = useUsersState()

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useUsersDispatch } from '../Hooks/useUsersDispatch'
+import { useUsersDispatch } from '../hooks/useUsersDispatch'
 
 function AddUserFormModal() {
     const [user, setUser] = useState({ id: 0, firstName: '', lastName: '', isAdmin: false, jobTitle: '', email: '', mobile: '', joinDate: '' })

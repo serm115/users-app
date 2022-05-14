@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { UsersDispatchContext } from '../Contexts/users'
+import { UsersDispatchContext } from '../contexts/users'
 
 export function useUsersDispatch() {
     const context = useContext(UsersDispatchContext)
