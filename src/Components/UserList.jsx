@@ -35,9 +35,17 @@ function UserList() {
                 </tr>
             </thead>
             <tbody>
-                {users.map((user, index) => (
-                    <UserItem key={user.id} num={index + 1} user={user} />
-                ))}
+                {users.length ? (
+                    users.map((user, index) => (
+                        <UserItem key={user.id} num={index + 1} user={user} />
+                    ))
+                ) : (
+                    <tr>
+                        <td colspan={9} className="text-center">
+                            کاربری وجود ندارد
+                        </td>
+                    </tr>
+                )}
             </tbody>
         </table>
     )
