@@ -17,7 +17,7 @@ function UserList() {
                         Last Name
                     </th>
                     <th className="text-center" scope="col">
-                        Is Admin
+                        IsAdmin
                     </th>
                     <th className="text-center" scope="col">
                         Job Title

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useUsersDispatch } from '../hooks/useUsersDispatch'
+import Input from './ui/input'
 
 function UserItem({ num, user }) {
     const [edit, setEdit] = useState(false)
@@ -66,54 +67,48 @@ function UserItem({ num, user }) {
                         {num}
                     </th>
                     <td className="text-center">
-                        <input
+                        <Input
                             type="text"
-                            className="form-control"
                             name="firstName"
                             value={editedUser.firstName}
                             onChange={handleInputChange}
                         />
                     </td>
                     <td className="text-center">
-                        <input
+                        <Input
                             type="text"
-                            className="form-control"
                             name="lastName"
                             value={editedUser.lastName}
                             onChange={handleInputChange}
                         />
                     </td>
                     <td className="text-center">
-                        <input
+                        <Input
                             type="checkbox"
-                            className="form-check-input"
                             name="isAdmin"
                             checked={editedUser.isAdmin}
                             onChange={handleInputChange}
                         />
                     </td>
                     <td className="text-center">
-                        <input
+                        <Input
                             type="text"
-                            className="form-control"
                             name="jobTitle"
                             value={editedUser.jobTitle}
                             onChange={handleInputChange}
                         />
                     </td>
                     <td className="text-center">
-                        <input
-                            type="email"
-                            className="form-control"
+                        <Input
+                            type="text"
                             name="email"
                             value={editedUser.email}
                             onChange={handleInputChange}
                         />
                     </td>
                     <td className="text-center">
-                        <input
+                        <Input
                             type="text"
-                            className="form-control"
                             name="mobile"
                             value={editedUser.mobile}
                             onChange={handleInputChange}
