@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useUsersDispatch } from '../hooks/useUsersDispatch'
+import { useUsersDispatch } from '../hooks/useUsersDispatch
 import Input from './ui/input'
 
 function UserItem({ num, user }) {
