@@ -64,8 +64,6 @@ function AddUserFormModal({ show, handleClose }) {
         }
     }
 
-    const save = () => {}
-
     const close = () => {
         setError('')
         setUser(initailState)
