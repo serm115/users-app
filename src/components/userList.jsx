@@ -1,8 +1,28 @@
+import { useEffect } from 'react'
 import UserItem from './userItem'
 import { useUsersState } from '../hooks/useUsersState'
+import { useUsersDispatch } from '../hooks/useUsersDispatch'
+import { httpClient } from '../services/httpClient'
 
 function UserList() {
     const users = useUsersState()
+    const dispatch = useUsersDispatch()
+
+    useEffect(() => {
+        getUsers()
+    }, [])
+
+    async function getUsers() {
+        await httpClient.get('/').then((response) => {
+            dispatch({
+                type: 'get_users',
+                payload: {
+                    users: response.data.data,
+                },
+            })
+        })
+    }
+
     return (
         <table className="table table-striped">
             <thead>
@@ -41,7 +61,7 @@ function UserList() {
                     ))
                 ) : (
                     <tr>
-                        <td colspan={9} className="text-center">
+                        <td colSpan={9} className="text-center">
                             کاربری وجود ندارد
                         </td>
                     </tr>
