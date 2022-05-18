@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useUsersDispatch } from '../hooks/useUsersDispatch'
+import { httpClient } from '../services/httpClient'
 import Input from './ui/input'
 
 function UserItem({ num, user }) {
@@ -9,21 +10,24 @@ function UserItem({ num, user }) {
     const { id, firstName, lastName, isAdmin, jobTitle, email, mobile, joinDate } = user
     const dispatch = useUsersDispatch()
 
-    const handleDelete = () => {
-        dispatch({
-            type: 'delete_user',
-            payload: {
-                id,
-            },
-        })
-    }
-
     const handleInputChange = (e) => {
         const target = e.target
         const value = target.type === 'checkbox' ? target.checked : target.value
         const name = target.name
 
         setEditedUser((prevState) => ({ ...prevState, [name]: value }))
+    }
+
+    const handleDelete = () => {
+        httpClient.delete(`/${id}`).then((response) => {
+            console.log(response.data.message)
+            dispatch({
+                type: 'delete_user',
+                payload: {
+                    id,
+                },
+            })
+        })
     }
 
     const handleEdit = () => {
