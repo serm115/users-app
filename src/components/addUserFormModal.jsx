@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useUsersDispatch } from '../hooks/useUsersDispatch'
+import { httpClient } from '../services/httpClient'
 import Input from './ui/input'
 
 function AddUserFormModal() {
-    const [user, setUser] = useState({
+    const initialUser = {
         id: 0,
         firstName: '',
         lastName: '',
@@ -11,8 +12,10 @@ function AddUserFormModal() {
         jobTitle: '',
         email: '',
         mobile: '',
+        password: '',
         joinDate: '',
-    })
+    }
+    const [user, setUser] = useState(initialUser)
     const dispatch = useUsersDispatch()
 
     const handleInputChange = (e) => {
@@ -24,23 +27,20 @@ function AddUserFormModal() {
     }
 
     const handleSaveButtonClick = () => {
-        user.id = Date.now()
         user.joinDate = new Date().toLocaleString()
-        dispatch({
-            type: 'add_user',
-            payload: {
-                user,
-            },
-        })
-        setUser({
-            id: 0,
-            firstName: '',
-            lastName: '',
-            isAdmin: false,
-            jobTitle: '',
-            email: '',
-            mobile: '',
-            joinDate: '',
+        addUser()
+    }
+
+    function addUser() {
+        httpClient.post('/', user).then((response) => {
+            console.log(response)
+            dispatch({
+                type: 'add_user',
+                payload: {
+                    user,
+                },
+            })
+            setUser(initialUser)
         })
     }
 
@@ -109,6 +109,16 @@ function AddUserFormModal() {
                                         value={user.mobile}
                                         onChange={handleInputChange}
                                         label="Mobile"
+                                    />
+                                </div>
+                                <div className="mb-3 col-12 col-md-6">
+                                    <Input
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        value={user.password}
+                                        onChange={handleInputChange}
+                                        label="Password"
                                     />
                                 </div>
                                 <div className="mb-3 col-12 col-md-6 d-flex align-items-center">
