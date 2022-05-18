@@ -12,8 +12,8 @@ function UserList() {
         getUsers()
     }, [])
 
-    async function getUsers() {
-        await httpClient.get('/').then((response) => {
+    function getUsers() {
+        httpClient.get('/').then((response) => {
             dispatch({
                 type: 'get_users',
                 payload: {
@@ -49,6 +49,9 @@ function UserList() {
                         Mobile
                     </th>
                     <th className="text-center" scope="col">
+                        Password
+                    </th>
+                    <th className="text-center" scope="col">
                         Join Date
                     </th>
                     <th className="text-center" scope="col"></th>
@@ -61,7 +64,7 @@ function UserList() {
                     ))
                 ) : (
                     <tr>
-                        <td colSpan={9} className="text-center">
+                        <td colSpan={10} className="text-center">
                             کاربری وجود ندارد
                         </td>
                     </tr>
