@@ -1,5 +1,7 @@
 export function usersReducer(state, action) {
     switch (action.type) {
+        case 'get_users':
+            return getUsers(state, action)
         case 'add_user':
             return addUser(state, action)
         case 'delete_user':
@@ -8,6 +10,14 @@ export function usersReducer(state, action) {
             return editUser(state, action)
         default:
             throw Error(`action type not allowed: ${action.type}`)
+    }
+}
+
+const getUsers = (state, action) => {
+    let { users } = action.payload
+    return {
+        ...state,
+        users,
     }
 }
 
