@@ -1,5 +1,6 @@
 import AddUserFormModal from './components/addUserFormModal'
 import Header from './components/header'
+import Loading from './components/ui/loading/loading'
 import UserList from './components/userList'
 import { UsersProvider } from './contexts/users'
 
@@ -22,6 +23,7 @@ function App() {
                 </div>
             </main>
             <AddUserFormModal />
+            <Loading />
         </UsersProvider>
     )
 }
