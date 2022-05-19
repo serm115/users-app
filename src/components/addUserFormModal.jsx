@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useUsersDispatch } from '../hooks/useUsersDispatch'
+import { useAppDispatch } from '../hooks/useAppDispatch'
 import { httpClient } from '../services/httpClient'
 import Input from './ui/input'
 
@@ -16,7 +16,7 @@ function AddUserFormModal() {
         joinDate: '',
     }
     const [user, setUser] = useState(initialUser)
-    const dispatch = useUsersDispatch()
+    const dispatch = useAppDispatch()
 
     const handleInputChange = (e) => {
         const target = e.target

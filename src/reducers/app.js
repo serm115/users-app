@@ -1,4 +1,4 @@
-export function usersReducer(state, action) {
+export function appReducer(state, action) {
     switch (action.type) {
         case 'get_users':
             return getUsers(state, action)

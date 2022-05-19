@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useUsersDispatch } from '../hooks/useUsersDispatch'
+import { useAppDispatch } from '../hooks/useAppDispatch'
 import { httpClient } from '../services/httpClient'
 import Input from './ui/input'
 
@@ -8,7 +8,7 @@ function UserItem({ num, user }) {
     const [editedUser, setEditedUser] = useState(user)
 
     const { id, firstName, lastName, isAdmin, jobTitle, email, mobile, password, joinDate } = user
-    const dispatch = useUsersDispatch()
+    const dispatch = useAppDispatch()
 
     const handleInputChange = (e) => {
         const target = e.target

@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { UsersStateContext } from '../contexts/users'
+import { UsersStateContext } from '../contexts/app'
 
 export function useLoadingState() {
     const context = useContext(UsersStateContext)

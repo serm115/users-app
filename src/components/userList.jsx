@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import UserItem from './userItem'
 import { useUsersState } from '../hooks/useUsersState'
-import { useUsersDispatch } from '../hooks/useUsersDispatch'
+import { useAppDispatch } from '../hooks/useAppDispatch'
 import { httpClient } from '../services/httpClient'
 
 function UserList() {
     const users = useUsersState()
-    const dispatch = useUsersDispatch()
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         getUsers()

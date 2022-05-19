@@ -1,11 +1,11 @@
 import { useContext } from 'react'
-import { UsersStateContext } from '../contexts/users'
+import { AppStateContext } from '../contexts/app'
 
 export function useUsersState() {
-    const context = useContext(UsersStateContext)
+    const context = useContext(AppStateContext)
 
     if (!context) {
-        throw Error('useUserState must be used with UsersProvider')
+        throw Error('useUserState must be used with AppProvider')
     }
 
     return context.users
