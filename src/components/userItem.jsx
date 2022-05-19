@@ -31,12 +31,14 @@ function UserItem({ num, user }) {
     }
 
     const handleEdit = () => {
-        httpClient.put(`/${id}`, editedUser).then((response) => {
-            console.log(response.data.message)
+        const editedUserCopy = {...editedUser}
+        delete editedUserCopy.id
+        httpClient.put(`/${id}`, editedUserCopy).then((response) => {
+            console.log(response)
             dispatch({
                 type: 'edit_user',
                 payload: {
-                    user: editedUser,
+                    user: response.data,
                 },
             })
             setEdit(false)
