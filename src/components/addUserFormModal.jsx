@@ -6,7 +6,6 @@ import Input from './ui/input'
 
 function AddUserFormModal() {
     const initialUser = {
-        id: 0,
         firstName: '',
         lastName: '',
         isAdmin: false,
@@ -44,7 +43,7 @@ function AddUserFormModal() {
             dispatch({
                 type: 'add_user',
                 payload: {
-                    user,
+                    user: response.data,
                 },
             })
             setUser(initialUser)
