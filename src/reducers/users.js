@@ -8,6 +8,8 @@ export function usersReducer(state, action) {
             return deleteUser(state, action)
         case 'edit_user':
             return editUser(state, action)
+        case 'change_loading_state':
+            return changeLoadingState(state, action)
         default:
             throw Error(`action type not allowed: ${action.type}`)
     }
@@ -47,5 +49,13 @@ const editUser = (state, action) => {
         ...state,
         // users: [...newUsers, user],
         users: [...newUsers],
+    }
+}
+
+const changeLoadingState = (state, action) => {
+    const loading = action.payload
+    return {
+        ...state,
+        loading,
     }
 }
