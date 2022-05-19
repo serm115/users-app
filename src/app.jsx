@@ -3,6 +3,7 @@ import Header from './components/header'
 import Loading from './components/ui/loading/loading'
 import UserList from './components/userList'
 import { useLoadingState } from './hooks/useLoadingState'
+import { ToastContainer} from 'react-toastify'
 
 function App() {
     const loading = useLoadingState()
@@ -24,6 +25,7 @@ function App() {
                 </div>
             </main>
             <AddUserFormModal />
+            <ToastContainer />
             {loading && <Loading />}
         </>
     )

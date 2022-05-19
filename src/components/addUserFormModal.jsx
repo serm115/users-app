@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 import { useAppDispatch } from '../hooks/useAppDispatch'
 import { httpClient } from '../services/httpClient'
 import Input from './ui/input'
@@ -47,6 +48,7 @@ function AddUserFormModal() {
                 },
             })
             setUser(initialUser)
+            toast.success('User successfully added')
         })
     }
 

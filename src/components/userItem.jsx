@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 import { useAppDispatch } from '../hooks/useAppDispatch'
 import { httpClient } from '../services/httpClient'
 import Input from './ui/input'
@@ -33,6 +34,7 @@ function UserItem({ num, user }) {
                     id,
                 },
             })
+            toast.success('User successfully removed')
         })
     }
 
@@ -54,6 +56,7 @@ function UserItem({ num, user }) {
                 },
             })
             setEdit(false)
+            toast.success('User successfully edited')
         })
     }
 
