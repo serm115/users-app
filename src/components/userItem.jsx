@@ -37,7 +37,7 @@ function UserItem({ num, user }) {
     }
 
     const handleEdit = () => {
-        const editedUserCopy = {...editedUser}
+        const editedUserCopy = { ...editedUser }
         delete editedUserCopy.id
         dispatch({
             type: 'change_loading_state',
@@ -74,11 +74,11 @@ function UserItem({ num, user }) {
                     <td className="text-center">{joinDate}</td>
                     <td className="text-center">
                         <div className="d-flex">
-                            <button className="btn btn-danger me-2" onClick={handleDelete}>
-                                Delete
-                            </button>
-                            <button className="btn btn-info" onClick={() => setEdit(true)}>
+                            <button className="btn btn-info me-2" onClick={() => setEdit(true)}>
                                 Edit
+                            </button>
+                            <button className="btn btn-danger" onClick={handleDelete}>
+                                Delete
                             </button>
                         </div>
                     </td>
@@ -146,9 +146,14 @@ function UserItem({ num, user }) {
                     </td>
                     <td className="text-center">{editedUser.joinDate}</td>
                     <td className="text-center">
-                        <button className="btn btn-info" onClick={handleEdit}>
-                            Edit
-                        </button>
+                        <div className="d-flex">
+                            <button className="btn btn-info me-2" onClick={handleEdit}>
+                                Edit
+                            </button>
+                            <button className="btn btn-primary" onClick={() => setEdit(false)}>
+                                Cancel
+                            </button>
+                        </div>
                     </td>
                 </tr>
             )}
