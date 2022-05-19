@@ -2,11 +2,12 @@ import AddUserFormModal from './components/addUserFormModal'
 import Header from './components/header'
 import Loading from './components/ui/loading/loading'
 import UserList from './components/userList'
-import { AppProvider } from './contexts/app'
+import { useLoadingState } from './hooks/useLoadingState'
 
 function App() {
+    const loading = useLoadingState()
     return (
-        <AppProvider>
+        <>
             <Header />
             <main>
                 <div className="container">
@@ -23,8 +24,8 @@ function App() {
                 </div>
             </main>
             <AddUserFormModal />
-            {/* <Loading /> */}
-        </AppProvider>
+            {loading && <Loading />}
+        </>
     )
 }
 

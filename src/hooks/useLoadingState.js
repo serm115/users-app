@@ -1,11 +1,11 @@
 import { useContext } from 'react'
-import { UsersStateContext } from '../contexts/app'
+import { AppStateContext } from '../contexts/app'
 
 export function useLoadingState() {
-    const context = useContext(UsersStateContext)
+    const context = useContext(AppStateContext)
 
     if (!context) {
-        throw Error('useLoadingState must be used with UsersProvider')
+        throw Error('useLoadingState must be used with AppProvider')
     }
 
     return context.loading

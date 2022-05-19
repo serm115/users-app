@@ -13,6 +13,12 @@ function UserList() {
     }, [])
 
     function getUsers() {
+        dispatch({
+            type: 'change_loading_state',
+            payload: {
+                loading: true,
+            },
+        })
         httpClient.get('/').then((response) => {
             dispatch({
                 type: 'get_users',

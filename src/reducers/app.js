@@ -20,6 +20,7 @@ const getUsers = (state, action) => {
     return {
         ...state,
         users,
+        loading: false,
     }
 }
 
@@ -28,6 +29,7 @@ const addUser = (state, action) => {
     return {
         ...state,
         users: [...state.users, user],
+        loading: false,
     }
 }
 
@@ -37,6 +39,7 @@ const deleteUser = (state, action) => {
     return {
         ...state,
         users: state.users.filter((item) => item.id !== id),
+        loading: false,
     }
 }
 
@@ -49,6 +52,7 @@ const editUser = (state, action) => {
         ...state,
         // users: [...newUsers, user],
         users: [...newUsers],
+        loading: false,
     }
 }
 

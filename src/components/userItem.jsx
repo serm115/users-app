@@ -19,6 +19,12 @@ function UserItem({ num, user }) {
     }
 
     const handleDelete = () => {
+        dispatch({
+            type: 'change_loading_state',
+            payload: {
+                loading: true,
+            },
+        })
         httpClient.delete(`/${id}`).then((response) => {
             console.log(response.data.message)
             dispatch({
@@ -33,6 +39,12 @@ function UserItem({ num, user }) {
     const handleEdit = () => {
         const editedUserCopy = {...editedUser}
         delete editedUserCopy.id
+        dispatch({
+            type: 'change_loading_state',
+            payload: {
+                loading: true,
+            },
+        })
         httpClient.put(`/${id}`, editedUserCopy).then((response) => {
             console.log(response)
             dispatch({

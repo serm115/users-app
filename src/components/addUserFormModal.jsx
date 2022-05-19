@@ -32,6 +32,12 @@ function AddUserFormModal() {
     }
 
     function addUser() {
+        dispatch({
+            type: 'change_loading_state',
+            payload: {
+                loading: true,
+            },
+        })
         httpClient.post('/', user).then((response) => {
             console.log(response)
             dispatch({
