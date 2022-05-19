@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from 'react'
+import { createContext, useReducer } from 'react'
 import { usersReducer } from '../reducers/users'
 
 export const UsersStateContext = createContext()
@@ -6,6 +6,7 @@ export const UsersDispatchContext = createContext()
 
 const initialState = {
     users: [],
+    loading: false,
 }
 
 export function UsersProvider({ children }) {
