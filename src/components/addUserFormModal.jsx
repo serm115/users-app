@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { useAppDispatch } from '../hooks/useAppDispatch'
-import { httpClient } from '../services/httpClient'
+import api from '../helpers/httpClient'
 import Input from './ui/input'
 
 function AddUserFormModal() {
@@ -38,12 +38,12 @@ function AddUserFormModal() {
                 loading: true,
             },
         })
-        httpClient.post('/', user).then((response) => {
+        api.post('users/', user).then((response) => {
             console.log(response)
             dispatch({
                 type: 'add_user',
                 payload: {
-                    user: response.data,
+                    user: response.data.data,
                 },
             })
             setUser(initialUser)

@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import UserItem from './userItem'
 import { useUsersState } from '../hooks/useUsersState'
 import { useAppDispatch } from '../hooks/useAppDispatch'
-import { httpClient } from '../services/httpClient'
+import api from '../helpers/httpClient'
 
 function UserList() {
     const users = useUsersState()
@@ -12,21 +12,31 @@ function UserList() {
         getUsers()
     }, [])
 
-    function getUsers() {
+    async function getUsers() {
         dispatch({
             type: 'change_loading_state',
             payload: {
                 loading: true,
             },
         })
-        httpClient.get('/').then((response) => {
-            dispatch({
-                type: 'get_users',
-                payload: {
-                    users: response.data.data,
-                },
+        await api
+            .get('users/')
+            .then((response) => {
+                dispatch({
+                    type: 'get_users',
+                    payload: {
+                        users: response.data.data,
+                    },
+                })
             })
-        })
+            .catch((error) => {
+                dispatch({
+                    type: 'change_loading_state',
+                    payload: {
+                        loading: false,
+                    },
+                })
+            })
     }
 
     return (

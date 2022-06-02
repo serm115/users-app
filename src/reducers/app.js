@@ -57,7 +57,7 @@ const editUser = (state, action) => {
 }
 
 const changeLoadingState = (state, action) => {
-    const loading = action.payload
+    const { loading } = action.payload
     return {
         ...state,
         loading,

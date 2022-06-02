@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { useAppDispatch } from '../hooks/useAppDispatch'
-import { httpClient } from '../services/httpClient'
+import api from '../helpers/httpClient'
 import Input from './ui/input'
 
 function UserItem({ num, user }) {
@@ -26,8 +26,7 @@ function UserItem({ num, user }) {
                 loading: true,
             },
         })
-        httpClient.delete(`/${id}`).then((response) => {
-            console.log(response.data.message)
+        api.delete(`users/${id}`).then((response) => {
             dispatch({
                 type: 'delete_user',
                 payload: {
@@ -47,12 +46,12 @@ function UserItem({ num, user }) {
                 loading: true,
             },
         })
-        httpClient.put(`/${id}`, editedUserCopy).then((response) => {
+        api.put(`users/${id}`, editedUserCopy).then((response) => {
             console.log(response)
             dispatch({
                 type: 'edit_user',
                 payload: {
-                    user: response.data,
+                    user: response.data.data,
                 },
             })
             setEdit(false)
