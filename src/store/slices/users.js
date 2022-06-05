@@ -7,7 +7,13 @@ const initialState = {
 export const usersSlice = createSlice({
     name: 'users',
     initialState,
-    reducers: {},
+    reducers: {
+        fetchUsers: (state, action) => {
+            state.list = action.payload
+        },
+    },
 })
+
+export const { fetchUsers } = usersSlice.actions
 
 export default usersSlice.reducer
