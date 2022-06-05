@@ -1,15 +1,17 @@
 import { useState } from 'react'
-import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { useDispatch } from 'react-redux'
 import api from '../../helpers/httpClient'
 import Input from '../shared/input'
 import notify from '../../helpers/notify'
+import { setLoading } from '../../store/slices/app'
+import { deleteUser, editUser } from '../../store/slices/users'
 
 function UserItem({ num, user }) {
     const [edit, setEdit] = useState(false)
     const [editedUser, setEditedUser] = useState(user)
 
     const { id, firstName, lastName, isAdmin, jobTitle, email, mobile, joinDate } = user
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch()
 
     const handleInputChange = (e) => {
         const target = e.target
@@ -20,42 +22,32 @@ function UserItem({ num, user }) {
     }
 
     const handleDelete = () => {
-        dispatch({
-            type: 'change_loading_state',
-            payload: {
-                loading: true,
-            },
-        })
-        api.delete(`users/${id}`).then((response) => {
-            dispatch({
-                type: 'delete_user',
-                payload: {
-                    id,
-                },
+        dispatch(setLoading(true))
+        api.delete(`users/${id}`)
+            .then((response) => {
+                dispatch(deleteUser(id))
+                dispatch(setLoading(false))
+                notify.success('User successfully removed')
             })
-            notify.success('User successfully removed')
-        })
+            .catch((error) => {
+                dispatch(setLoading(false))
+            })
     }
 
     const handleEdit = () => {
         const editedUserCopy = { ...editedUser }
         delete editedUserCopy.id
-        dispatch({
-            type: 'change_loading_state',
-            payload: {
-                loading: true,
-            },
-        })
-        api.put(`users/${id}`, editedUserCopy).then((response) => {
-            dispatch({
-                type: 'edit_user',
-                payload: {
-                    user: response.data.data,
-                },
+        dispatch(setLoading(true))
+        api.put(`users/${id}`, editedUserCopy)
+            .then((response) => {
+                dispatch(editUser(response.data.data))
+                dispatch(setLoading(false))
+                setEdit(false)
+                notify.success('User successfully edited')
             })
-            setEdit(false)
-            notify.success('User successfully edited')
-        })
+            .catch((error) => {
+                dispatch(setLoading(false))
+            })
     }
 
     return (
