@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
-import { useAppDispatch } from '../hooks/useAppDispatch'
-import api from '../helpers/httpClient'
-import Input from './ui/input'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import api from '../../helpers/httpClient'
+import Input from '../shared/input'
 
 function UserItem({ num, user }) {
     const [edit, setEdit] = useState(false)
