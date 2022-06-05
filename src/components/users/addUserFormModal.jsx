@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { toast } from 'react-toastify'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import api from '../../helpers/httpClient'
 import Input from '../shared/input'
 import Modal from '../shared/modal'
+import notify from '../../helpers/notify'
 
 function AddUserFormModal() {
     const initialUser = {
@@ -49,7 +49,7 @@ function AddUserFormModal() {
             })
             setUser(initialUser)
             setShowModal(false)
-            toast.success('User successfully added')
+            notify.success('User successfully added')
         })
     }
 

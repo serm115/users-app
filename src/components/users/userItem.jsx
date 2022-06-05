@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { toast } from 'react-toastify'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import api from '../../helpers/httpClient'
 import Input from '../shared/input'
+import notify from '../../helpers/notify'
 
 function UserItem({ num, user }) {
     const [edit, setEdit] = useState(false)
@@ -33,7 +33,7 @@ function UserItem({ num, user }) {
                     id,
                 },
             })
-            toast.success('User successfully removed')
+            notify.success('User successfully removed')
         })
     }
 
@@ -47,7 +47,6 @@ function UserItem({ num, user }) {
             },
         })
         api.put(`users/${id}`, editedUserCopy).then((response) => {
-            console.log(response)
             dispatch({
                 type: 'edit_user',
                 payload: {
@@ -55,7 +54,7 @@ function UserItem({ num, user }) {
                 },
             })
             setEdit(false)
-            toast.success('User successfully edited')
+            notify.success('User successfully edited')
         })
     }
 
