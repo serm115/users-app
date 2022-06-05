@@ -30,7 +30,7 @@ function UserList() {
 
     return (
         <>
-            {/* <AddUserFormModal /> */}
+            <AddUserFormModal />
             <div className="table-responsive">
                 <table className="table table-striped">
                     <UserListHeader />

@@ -11,9 +11,12 @@ export const usersSlice = createSlice({
         fetchUsers: (state, action) => {
             state.list = action.payload
         },
+        addUser: (state, action) => {
+            state.list.push(action.payload)
+        },
     },
 })
 
-export const { fetchUsers } = usersSlice.actions
+export const { fetchUsers, addUser } = usersSlice.actions
 
 export default usersSlice.reducer

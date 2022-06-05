@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { useDispatch } from 'react-redux'
 import api from '../../helpers/httpClient'
 import Input from '../shared/input'
 import Modal from '../shared/modal'
 import notify from '../../helpers/notify'
+import { setLoading } from '../../store/slices/app'
+import { addUser } from '../../store/slices/users'
 
 function AddUserFormModal() {
     const initialUser = {
@@ -18,7 +20,7 @@ function AddUserFormModal() {
     }
     const [user, setUser] = useState(initialUser)
     const [showModal, setShowModal] = useState(false)
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch()
 
     const handleInputChange = (e) => {
         const target = e.target
@@ -30,27 +32,22 @@ function AddUserFormModal() {
 
     const handleSaveButtonClick = () => {
         user.joinDate = new Date().toLocaleString()
-        addUser()
+        addUserToList()
     }
 
-    function addUser() {
-        dispatch({
-            type: 'change_loading_state',
-            payload: {
-                loading: true,
-            },
-        })
-        api.post('users/', user).then((response) => {
-            dispatch({
-                type: 'add_user',
-                payload: {
-                    user: response.data.data,
-                },
+    function addUserToList() {
+        dispatch(setLoading(true))
+        api.post('users/', user)
+            .then((response) => {
+                dispatch(addUser(response.data.data))
+                dispatch(setLoading(false))
+                setUser(initialUser)
+                setShowModal(false)
+                notify.success('User successfully added')
             })
-            setUser(initialUser)
-            setShowModal(false)
-            notify.success('User successfully added')
-        })
+            .catch((error) => {
+                dispatch(setLoading(false))
+            })
     }
 
     return (
