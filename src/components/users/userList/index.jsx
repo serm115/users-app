@@ -1,49 +1,36 @@
 import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import UserItem from '../userItem'
-import { useUsersState } from '../../../hooks/useUsersState'
-import { useAppDispatch } from '../../../hooks/useAppDispatch'
 import api from '../../../helpers/httpClient'
 import UserListHeader from './userListHeader'
 import AddUserFormModal from '../addUserFormModal'
+import { fetchUsers } from '../../../store/slices/users'
+import { setLoading } from '../../../store/slices/app'
 
 function UserList() {
-    const users = useUsersState()
-    const dispatch = useAppDispatch()
+    const users = useSelector((state) => state.users.list)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         getUsers()
     }, [])
 
     async function getUsers() {
-        dispatch({
-            type: 'change_loading_state',
-            payload: {
-                loading: true,
-            },
-        })
+        dispatch(setLoading(true))
         await api
             .get('users/')
             .then((response) => {
-                dispatch({
-                    type: 'get_users',
-                    payload: {
-                        users: response.data.data,
-                    },
-                })
+                dispatch(fetchUsers(response.data.data))
+                dispatch(setLoading(false))
             })
             .catch((error) => {
-                dispatch({
-                    type: 'change_loading_state',
-                    payload: {
-                        loading: false,
-                    },
-                })
+                dispatch(setLoading(false))
             })
     }
 
     return (
         <>
-            <AddUserFormModal />
+            {/* <AddUserFormModal /> */}
             <div className="table-responsive">
                 <table className="table table-striped">
                     <UserListHeader />
