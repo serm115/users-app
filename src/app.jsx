@@ -1,11 +1,11 @@
 import Header from './components/header'
 import Loading from './components/shared/loading/loading'
 import UserList from './components/users/userList'
-import { useLoadingState } from './hooks/useLoadingState'
+import { useSelector } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 
 function App() {
-    const loading = useLoadingState()
+    const loading = useSelector((state) => state.app.loading)
     return (
         <>
             <Header />
