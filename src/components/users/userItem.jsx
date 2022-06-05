@@ -8,7 +8,7 @@ function UserItem({ num, user }) {
     const [edit, setEdit] = useState(false)
     const [editedUser, setEditedUser] = useState(user)
 
-    const { id, firstName, lastName, isAdmin, jobTitle, email, mobile, password, joinDate } = user
+    const { id, firstName, lastName, isAdmin, jobTitle, email, mobile, joinDate } = user
     const dispatch = useAppDispatch()
 
     const handleInputChange = (e) => {
@@ -71,7 +71,6 @@ function UserItem({ num, user }) {
                     <td className="text-center">{jobTitle}</td>
                     <td className="text-center">{email}</td>
                     <td className="text-center">{mobile}</td>
-                    <td className="text-center">{password}</td>
                     <td className="text-center">{joinDate}</td>
                     <td className="text-center">
                         <div className="d-flex">
@@ -134,14 +133,6 @@ function UserItem({ num, user }) {
                             type="text"
                             name="mobile"
                             value={editedUser.mobile}
-                            onChange={handleInputChange}
-                        />
-                    </td>
-                    <td className="text-center">
-                        <Input
-                            type="text"
-                            name="password"
-                            value={editedUser.password}
                             onChange={handleInputChange}
                         />
                     </td>

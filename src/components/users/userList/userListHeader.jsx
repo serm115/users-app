@@ -24,9 +24,6 @@ function UserListHeader() {
                     Mobile
                 </th>
                 <th className="text-center" scope="col">
-                    Password
-                </th>
-                <th className="text-center" scope="col">
                     Join Date
                 </th>
                 <th className="text-center" scope="col"></th>
